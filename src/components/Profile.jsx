@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { getConnection, programID } from '../config';
 import { connectWallet, getProvider } from '../wallet';
 import { fetchCollectionData } from '../fetchData';
+import { Link } from 'react-router-dom';
 
 const PortfolioPage = () => {
   const [wallet, setWallet] = useState(null);
@@ -50,6 +51,14 @@ const PortfolioPage = () => {
         >
           Connect Wallet
         </button>
+        <Link to="/profiledashboard">
+        <button 
+          onClick={handleConnectWallet} 
+          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700"
+        >
+          Dashboard
+        </button>
+        </Link>
       </header>
 
       {/* Tab Navigation */}
@@ -97,7 +106,7 @@ const PortfolioPage = () => {
               {transactions.experience.map((tx, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Experience {index + 1}</h3>
-                  <h5 className="text-gray-500">Company Name | Duration</h5>
+                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company_name} | Duration</h5>
                   <p>{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].answer}</p>
                 </div>
               ))}
@@ -112,7 +121,7 @@ const PortfolioPage = () => {
               {transactions.education.map((tx, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Degree {index + 1}</h3>
-                  <h5 className="text-gray-500">University Name | Graduation Year</h5>
+                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].school_name} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].year}</h5>
                   <p>{JSON.parse(tx.accounts.map(a => a.data.education).join(', '))[0].question}</p>
                 </div>
               ))}
@@ -127,8 +136,8 @@ const PortfolioPage = () => {
               {transactions.certificate.map((tx, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Certification {index + 1}</h3>
-                  <h5 className="text-gray-500">Issuing Organization | Date</h5>
-                  <p>{tx.accounts.map(a => a.data.certificate).join(', ')}</p>
+                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].year}</h5>
+                  <p>{tx.accounts.map(a => a.data.certificate).join(', ')[0].desc}</p>
                 </div>
               ))}
             </div>

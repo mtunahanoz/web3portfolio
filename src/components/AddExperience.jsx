@@ -7,6 +7,7 @@ const AddExperience = () => {
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
   const [description, setDescription] = useState('');
+  const [addExperiment, setAddExperiment] = useState("");
 
   const handleAddExperience = () => {
     if (title && company && startDate && description) {
@@ -17,7 +18,16 @@ const AddExperience = () => {
         endDate: endDate || 'Present', // Eğer endDate boşsa 'Present' olarak ayarlanır
         description,
       };
-      setExperiences([...experiences, newExperience]);
+  
+      // Verileri JSON formatında güncelle
+      const experienceJson = JSON.stringify(newExperience);
+  
+      // JSON formatında veriyi deneyimlere ekle
+      setExperiences([...experiences, experienceJson]);
+      
+      console.log(experienceJson)
+
+      // Formu temizle  
       setTitle('');
       setCompany('');
       setStartDate('');
@@ -25,6 +35,7 @@ const AddExperience = () => {
       setDescription('');
     }
   };
+  
 
   return (
     <div className="max-w-4xl mx-auto mt-5 p-6 bg-gray-100 rounded-lg shadow-lg">

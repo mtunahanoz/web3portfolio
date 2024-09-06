@@ -1,70 +1,43 @@
-# Getting Started with Create React App
+# PROJE TANIMI
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Merkezi Olmayan Kişisel Yetenek Değerlendirme ve Akıllı Sözleşme ile İşe Alım Platformu
+Proje Tanımı:
+Bu dApp, kullanıcıların yeteneklerini blockchain üzerinde değerlendirmelerini, bu değerlendirmeler doğrultusunda iş bulmalarını ve işe alım süreçlerini tamamen şeffaf ve merkeziyetsiz bir şekilde yönetmelerini sağlar. Hem işverenler hem de iş arayanlar için tamamen merkezi olmayan bir işe alım süreci sunar.
 
-## Available Scripts
+Özellikler:
+Yetenek Değerlendirme ve Sertifikasyon:
 
-In the project directory, you can run:
+Kullanıcılar, belirli alanlardaki yeteneklerini platformda sergileyebilir ve topluluk veya bağımsız uzmanlar tarafından değerlendirilerek blockchain üzerinde onaylanmış dijital sertifikalar alabilir. Bu sertifikalar, işverenler tarafından güvenilir ve doğrulanmış yetenek kanıtı olarak kullanılabilir.
+Akıllı Sözleşmeli İşe Alım:
 
-### `npm start`
+İşverenler, belirli yeteneklere sahip adaylar için iş teklifleri sunabilir. İşe alım ve ödeme süreçleri, akıllı sözleşmeler aracılığıyla otomatik olarak yönetilir ve anlaşmaların tüm şartları blockchain üzerinde şeffaf bir şekilde saklanır.
+Yeteneğe Dayalı İş Bulma:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Kullanıcılar, sahip oldukları yeteneklere göre otomatik olarak iş ilanlarına eşleştirilebilir. Ayrıca, işverenler de spesifik yeteneklere sahip adayları arayabilir ve doğrudan teklif verebilir.
+Topluluk Geri Bildirimi ve Değerlendirmesi:
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+İş arayanlar, iş performansları hakkında topluluktan geri bildirim alabilir ve bu geri bildirimler blockchain üzerinde şeffaf bir şekilde saklanır. Bu, adayların iş geçmişini ve performansını güvenilir bir şekilde gösterir.
+Çalışma Kanıtı (Proof of Work):
 
-### `npm test`
+Tamamlanan işlerle ilgili tüm detaylar (iş tanımı, görevler, süre, sonuçlar) blockchain üzerinde saklanır. Bu, kullanıcıların kariyer geçmişlerini ve yeteneklerini güvenilir bir şekilde göstermelerini sağlar.
+İşe Alım Ücretlerinin Dağıtımı:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+İşe alım ücretleri ve primler, akıllı sözleşmeler aracılığıyla otomatik olarak dağıtılır. Bu, işverenler ve çalışanlar arasındaki ödeme süreçlerini hızlandırır ve güvence altına alır.
+Benzersizlik ve Yenilik:
+Şeffaf Yetenek Değerlendirmesi: Merkezi olmayan yetenek değerlendirme sistemi, geleneksel iş başvuru süreçlerine göre çok daha şeffaf ve güvenilirdir. Kullanıcıların yeteneklerinin topluluk tarafından değerlendirilmesi, sertifikasyonların doğruluğunu artırır.
 
-### `npm run build`
+Akıllı Sözleşmelerle İşe Alım: İşe alım sürecinin tamamen akıllı sözleşmelerle yönetilmesi, aracıların ortadan kalkmasını sağlar ve tüm sürecin hızlı, güvenli ve şeffaf olmasına yardımcı olur.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Çalışma Kanıtı: Kullanıcıların tamamladıkları işler üzerinden bir çalışma kanıtı oluşturması, iş geçmişlerinin ve yeteneklerinin güvenilir bir şekilde sergilenmesini sağlar. Bu, iş başvurularında önemli bir avantaj sunar.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+Topluluk Geri Bildirimi: Kullanıcıların performansları hakkında geri bildirim alması ve bu geri bildirimlerin blockchain üzerinde saklanması, işverenlerin daha bilinçli kararlar almasına olanak tanır.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Playground kod videomuz
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### PROJE KURULUMU
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+React kurulumuyla tamamen aynı. "npm start" koduyla çalışıyor
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
