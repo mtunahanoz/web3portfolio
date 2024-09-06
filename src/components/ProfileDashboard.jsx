@@ -3,6 +3,7 @@ import { FaHome, FaUser, FaCog, FaCertificate, FaSignOutAlt, FaUserGraduate } fr
 import CertificateUpload from './UploadCert';
 import { RiUserStarFill } from "react-icons/ri";
 import AddExperience from './AddExperience';
+import AddEducation from './AddEducation';
 
 const ProfileDashboard = () => {
   const [activeSection, setActiveSection] = useState('overview');
@@ -52,9 +53,9 @@ const ProfileDashboard = () => {
             </li>
             <li
               className={`mb-3 p-2 rounded-lg cursor-pointer flex items-center space-x-4 ${
-                activeSection === 'certifiacates' ? 'bg-blue-700' : 'hover:bg-blue-500'
+                activeSection === 'education' ? 'bg-blue-700' : 'hover:bg-blue-500'
               }`}
-              onClick={() => setActiveSection('asdasdas')}
+              onClick={() => setActiveSection('education')}
             >
               <FaUserGraduate />
               <span>Education</span>
@@ -109,11 +110,14 @@ const ProfileDashboard = () => {
             <p>This is the settings section where user preferences can be changed.</p>
           </section>
         )}
-            {activeSection === 'experience' && (
-              <AddExperience></AddExperience>
+        {activeSection === 'experience' && (
+          <AddExperience />
+        )}
+        {activeSection === 'education' && (
+          <AddEducation />
         )}
         {activeSection === 'certificates' && (
-          <CertificateUpload/>
+          <CertificateUpload />
         )}
       </main>
     </div>

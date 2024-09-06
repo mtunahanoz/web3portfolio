@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { getConnection, programID } from '../config';
-import { connectWallet, getProvider } from '../wallet';
-import { fetchCollectionData } from '../fetchData';
+import { getConnection, programID } from './config';
+import { connectWallet, getProvider } from './wallet';
+import { fetchCollectionData } from './fetchData';
 
 const PortfolioPage = () => {
   const [wallet, setWallet] = useState(null);
