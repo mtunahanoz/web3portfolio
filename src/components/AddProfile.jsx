@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-const AddEducation = () => {
+const AddProfile = () => {
   const [educationList, setEducationList] = useState([]);
   const [school, setSchool] = useState('');
   const [degree, setDegree] = useState('');
@@ -34,10 +34,10 @@ const AddEducation = () => {
       {/* Eğitim Ekleme Formu */}
       <section className="mb-10 p-6 bg-white rounded-lg shadow-md">
         <h2 className="text-2xl font-bold mb-4 border-b-2 border-blue-600 pb-2">
-          Add Profile
+          Add Education
         </h2>
         <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">School</label>
+          <label className="block text-lg font-semibold mb-2">Fullname</label>
           <input
             type="text"
             value={school}
@@ -45,17 +45,9 @@ const AddEducation = () => {
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
           />
         </div>
+   
         <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">Degree</label>
-          <input
-            type="text"
-            value={degree}
-            onChange={(e) => setDegree(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">Field of Study</label>
+          <label className="block text-lg font-semibold mb-2">Location</label>
           <input
             type="text"
             value={fieldOfStudy}
@@ -63,41 +55,26 @@ const AddEducation = () => {
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
           />
         </div>
+         
         <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">Start Date</label>
+          <label className="block text-lg font-semibold mb-2">Current Job</label>
           <input
-            type="date"
-            value={startDate}
-            onChange={(e) => setStartDate(e.target.value)}
+            type="text"
+            value={fieldOfStudy}
+            onChange={(e) => setFieldOfStudy(e.target.value)}
             className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
           />
         </div>
-        <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">End Date (Optional)</label>
-          <input
-            type="date"
-            value={endDate}
-            onChange={(e) => setEndDate(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-          />
-        </div>
-        <div className="mb-6">
-          <label className="block text-lg font-semibold mb-2">Description</label>
-          <textarea
-            value={description}
-            onChange={(e) => setDescription(e.target.value)}
-            className="w-full p-2 border border-gray-300 rounded-lg focus:outline-none focus:border-blue-600"
-          ></textarea>
-        </div>
+   
         <button
           onClick={handleAddEducation}
           className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700"
         >
-          Add Education
+          Add Profile
         </button>
       </section>
     </div>
   );
 };
 
-export default AddEducation;
+export default AddProfile;

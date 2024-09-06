@@ -4,9 +4,10 @@ import CertificateUpload from './UploadCert';
 import { RiUserStarFill } from "react-icons/ri";
 import AddExperience from './AddExperience';
 import AddEducation from './AddEducation';
+import AddProfile from './AddProfile';
 
 const ProfileDashboard = () => {
-  const [activeSection, setActiveSection] = useState('overview');
+  const [activeSection, setActiveSection] = useState('addExperience');
 
   return (
     <div className="flex h-screen bg-gray-100">
@@ -14,24 +15,15 @@ const ProfileDashboard = () => {
       <aside className="w-64 bg-blue-600 text-white flex flex-col fixed h-full">
         <div className="p-6 bg-blue-800">
           <img
-            src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqMJgay9MVG9-iGr_5JhRbHDc9FEdBuzZCBQ&s"
+            src="https://cdn-icons-png.flaticon.com/512/10337/10337609.png"
             alt="Profile"
             className="w-24 h-24 rounded-full mx-auto mb-4 object-cover"
           />
-          <h2 className="text-center text-2xl font-semibold">Tunahan Öz</h2>
-          <p className="text-center text-sm text-blue-200">Exacate CEO</p>
+      {/*     <h2 className="text-center text-2xl font-semibold">Tunahan Öz</h2>
+          <p className="text-center text-sm text-blue-200">Exacate CEO</p> */}
         </div>
         <nav className="flex-grow p-6">
           <ul>
-            <li
-              className={`mb-3 p-2 rounded-lg cursor-pointer flex items-center space-x-4 ${
-                activeSection === 'overview' ? 'bg-blue-700' : 'hover:bg-blue-500'
-              }`}
-              onClick={() => setActiveSection('overview')}
-            >
-              <FaHome />
-              <span>Overview</span>
-            </li>
             <li
               className={`mb-3 p-2 rounded-lg cursor-pointer flex items-center space-x-4 ${
                 activeSection === 'profile' ? 'bg-blue-700' : 'hover:bg-blue-500'
@@ -70,15 +62,6 @@ const ProfileDashboard = () => {
               <span>Certificates</span>
             </li>
 
-            <li
-              className={`mb-3 p-2 rounded-lg cursor-pointer flex items-center space-x-4 ${
-                activeSection === 'settings' ? 'bg-blue-700' : 'hover:bg-blue-500'
-              }`}
-              onClick={() => setActiveSection('settings')}
-            >
-              <FaCog />
-              <span>Settings</span>
-            </li>
 
           </ul>
         </nav>
@@ -92,17 +75,9 @@ const ProfileDashboard = () => {
 
       {/* Main Content */}
       <main className="flex-grow p-6 ml-64">
-        {activeSection === 'overview' && (
-          <section>
-            <h1 className="text-3xl font-semibold mb-4">Overview</h1>
-            <p>This is the overview section where general information is displayed.</p>
-          </section>
-        )}
+     
         {activeSection === 'profile' && (
-          <section>
-            <h1 className="text-3xl font-semibold mb-4">Profile</h1>
-            <p>This is the profile section where user details can be edited.</p>
-          </section>
+         <AddProfile></AddProfile>
         )}
         {activeSection === 'settings' && (
           <section>

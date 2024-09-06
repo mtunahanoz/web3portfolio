@@ -53,29 +53,6 @@ const CertificateUpload = () => {
         </button>
       </section>
 
-      {/* Sertifikalar Listesi */}
-      <section className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4 border-b-2 border-blue-600 pb-2">
-          Your Certificates
-        </h2>
-        <ul>
-          {certificates.length > 0 ? (
-            certificates.map((cert, index) => (
-              <li
-                key={index}
-                className="mb-4 p-4 bg-gray-200 rounded-lg shadow-md flex justify-between items-center"
-              >
-                <span className="font-semibold">{cert.name}</span>
-                <button className="text-blue-600 hover:underline">
-                  View Certificate
-                </button>
-              </li>
-            ))
-          ) : (
-            <p>No certificates uploaded yet.</p>
-          )}
-        </ul>
-      </section>
     </div>
   );
 };

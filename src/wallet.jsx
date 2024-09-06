@@ -4,6 +4,7 @@ export const connectWallet = async (setWallet, fetchData) => {
   try {
     const response = await window.solana.connect();
     setWallet(response.publicKey.toString());
+    console.log(response.publicKey.toString())
     fetchData();
   } catch (err) {
     console.error('Wallet connection failed', err);

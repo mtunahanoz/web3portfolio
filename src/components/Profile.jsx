@@ -3,57 +3,98 @@ import { getConnection, programID } from '../config';
 import { connectWallet, getProvider } from '../wallet';
 import { fetchCollectionData } from '../fetchData';
 import { Link } from 'react-router-dom';
+import CenteredButton from './CenteredButton';
+import CenteredForm from './CenteredForm';
+import db from '../firebase/firebaseConfig'; 
 
 const PortfolioPage = () => {
+  const [login, setLogin] = useState(false);
+  const [askName, setAskName] = useState(false);
   const [wallet, setWallet] = useState(null);
   const [provider, setProvider] = useState(null);
   const [connection, setConnection] = useState(null);
+  const [userData, setUserData] = useState();
   const [activeTab, setActiveTab] = useState('experience');
   const [transactions, setTransactions] = useState({ education: [], certificate: [], experience: [] });
 
   useEffect(() => {
     const conn = getConnection();
+    connectWallet(setWallet, () => {})
+    
     setProvider(getProvider(conn));
     setConnection(conn);
-  }, []);
+    if(wallet != null){
+     setLogin(true);
+     fetchData(wallet);
+     console.log("mantar")
+     fetchCollectionData('education', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, education: data })));
+     fetchCollectionData('certificate', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, certificate: data })));
+     fetchCollectionData('experience', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, experience: data })));
+    }
+  }, [wallet]);
 
-  const handleConnectWallet = () => {
-    connectWallet(setWallet, () => {
-      fetchCollectionData('education', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, education: data })));
-      fetchCollectionData('certificate', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, certificate: data })));
-      fetchCollectionData('experience', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, experience: data })));
-    });
+  
+
+  const fetchData = async (wallet) => {
+    if (!wallet) {
+      console.error("Wallet değeri tanımlı değil.");
+      return;
+    }
+  
+    try {
+      const snapshot = await db.collection("users").where("wallet", "==", wallet).get();
+      const data = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      console.log(data);
+      if(data.length >= 1){
+        console.log("çok data var");
+        setAskName(false);
+        setUserData(data[0])
+
+        
+      }  else{
+        setAskName(true);
+      }
+      console.log("asdas")
+      console.log(data[0])
+    } catch (error) {
+      console.error("Veri çekme hatası: ", error);
+    }
   };
 
+  if(!login){
+return ( <CenteredButton></CenteredButton>)
+
+  }
+    else if (askName){
+      return (<CenteredForm wallet={wallet} setAskName={setAskName} fetchData={fetchData}/>)
+    }
+    else if(userData){
   return (
+
+
     <div className="max-w-4xl mx-auto mt-5 p-6 bg-gray-100 rounded-lg shadow-lg">
       {/* Profil Bölümü */}
       <header className="text-center mb-10 p-6 bg-white rounded-lg shadow-md">
         <img
-          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqMJgay9MVG9-iGr_5JhRbHDc9FEdBuzZCBQ&s"
+          src="https://cdn-icons-png.flaticon.com/512/10337/10337609.png"
           alt="Profile"
           className="w-36 h-36 rounded-full mx-auto mb-4 object-cover shadow-md"
         />
-        <h1 className="text-3xl font-bold mb-2">Your Name</h1>
-        <p className="text-lg text-gray-600">Job Title | Company Name</p>
+        <h1 className="text-3xl font-bold mb-2">{userData.name}</h1>
+        <p className="text-lg text-gray-600">{userData.job} | {userData.company_name}</p>
         <p className="text-lg text-blue-600">
-          Location |{' '}
+        {userData.location} |{' '}
           <a
-            href="https://www.linkedin.com"
+            href={userData.lurl}
             className="text-blue-600 hover:underline"
           >
             LinkedIn Profile
           </a>
         </p>
-        <button 
-          onClick={handleConnectWallet} 
-          className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700"
-        >
-          Connect Wallet
-        </button>
+    
         <Link to="/profiledashboard">
         <button 
-          onClick={handleConnectWallet} 
+  
           className="mt-4 px-6 py-2 bg-blue-600 text-white rounded-full shadow hover:bg-blue-700"
         >
           Dashboard
@@ -106,8 +147,8 @@ const PortfolioPage = () => {
               {transactions.experience.map((tx, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Experience {index + 1}</h3>
-                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company_name} | Duration</h5>
-                  <p>{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].answer}</p>
+                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company_name} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].year}</h5>
+                  <p>{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].desc}</p>
                 </div>
               ))}
             </div>
@@ -122,7 +163,7 @@ const PortfolioPage = () => {
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Degree {index + 1}</h3>
                   <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].school_name} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].year}</h5>
-                  <p>{JSON.parse(tx.accounts.map(a => a.data.education).join(', '))[0].question}</p>
+                  <p>{JSON.parse(tx.accounts.map(a => a.data.education).join(', '))[0].desc}</p>
                 </div>
               ))}
             </div>
@@ -145,23 +186,9 @@ const PortfolioPage = () => {
         </div>
       </div>
 
-      {/* İletişim Bilgileri Bölümü */}
-      <section className="mb-10 p-6 bg-white rounded-lg shadow-md text-center">
-        <h2 className="text-2xl font-bold mb-4 border-b-2 border-blue-600 pb-2">
-          Contact Information
-        </h2>
-        <p className="text-lg">
-          <strong>Email:</strong> your.email@example.com
-        </p>
-        <p className="text-lg">
-          <strong>Phone:</strong> +123 456 7890
-        </p>
-        <p className="text-lg">
-          <strong>Location:</strong> Your City, Country
-        </p>
-      </section>
     </div>
   );
+              }
 };
 
 export default PortfolioPage;

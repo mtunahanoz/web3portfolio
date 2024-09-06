@@ -96,31 +96,6 @@ const AddExperience = () => {
         </button>
       </section>
 
-      {/* Eklenen Tecrübeler Listesi */}
-      <section className="p-6 bg-white rounded-lg shadow-md">
-        <h2 className="text-2xl font-bold mb-4 border-b-2 border-blue-600 pb-2">
-          Your Experiences
-        </h2>
-        <ul>
-          {experiences.length > 0 ? (
-            experiences.map((exp, index) => (
-              <li
-                key={index}
-                className="mb-4 p-4 bg-gray-200 rounded-lg shadow-md"
-              >
-                <h3 className="text-xl font-semibold">{exp.title}</h3>
-                <p className="text-gray-700">{exp.company}</p>
-                <p className="text-gray-600">
-                  {exp.startDate} - {exp.endDate}
-                </p>
-                <p className="text-gray-800 mt-2">{exp.description}</p>
-              </li>
-            ))
-          ) : (
-            <p>No experiences added yet.</p>
-          )}
-        </ul>
-      </section>
     </div>
   );
 };
