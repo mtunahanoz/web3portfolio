@@ -7,6 +7,8 @@ function CenteredForm(props) {
     surname: "",
     job: "",
     location: "",
+    company_name: "",
+    lurl: "",
   });
 
   const handleChange = (e) => {
@@ -39,7 +41,7 @@ function CenteredForm(props) {
 
         <div className="mb-4">
           <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="name">
-            İsim
+            Fullname
           </label>
           <input
             className="w-full p-3 border border-gray-300 rounded-lg text-lg"
@@ -51,21 +53,8 @@ function CenteredForm(props) {
           />
         </div>
         <div className="mb-4">
-          <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="surname">
-            Soyisim
-          </label>
-          <input
-            className="w-full p-3 border border-gray-300 rounded-lg text-lg"
-            type="text"
-            id="surname"
-            placeholder="Soyisminizi girin"
-            value={formData.surname}
-            onChange={handleChange}
-          />
-        </div>
-        <div className="mb-4">
           <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="job">
-            Şu Anki İş
+            Position
           </label>
           <input
             className="w-full p-3 border border-gray-300 rounded-lg text-lg"
@@ -91,14 +80,27 @@ function CenteredForm(props) {
         </div>
         <div className="mb-6">
           <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="location">
-            Pozisyon
+            Company Name
           </label>
           <input
             className="w-full p-3 border border-gray-300 rounded-lg text-lg"
             type="text"
-            id="location"
+            id="company_name"
             placeholder="Lokasyonunuzu girin"
-            value={formData.job}
+            value={formData.company_name}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="mb-6">
+          <label className="block text-gray-700 text-lg font-medium mb-2" htmlFor="location">
+            Linkedin URL
+          </label>
+          <input
+            className="w-full p-3 border border-gray-300 rounded-lg text-lg"
+            type="text"
+            id="lurl"
+            placeholder="Lokasyonunuzu girin"
+            value={formData.lurl}
             onChange={handleChange}
           />
         </div>

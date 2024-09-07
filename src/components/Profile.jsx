@@ -26,6 +26,7 @@ const PortfolioPage = () => {
     if(wallet != null){
      setLogin(true);
      fetchData(wallet);
+     localStorage.setItem('wallet', wallet);
      console.log("mantar")
      fetchCollectionData('education', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, education: data })));
      fetchCollectionData('certificate', provider, connection, programID, wallet, (data) => setTransactions(prev => ({ ...prev, certificate: data })));
@@ -147,7 +148,7 @@ return ( <CenteredButton></CenteredButton>)
               {transactions.experience.map((tx, index) => (
                 <div key={index} className="mb-6">
                   <h3 className="text-xl font-semibold">Experience {index + 1}</h3>
-                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company_name} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].year}</h5>
+                  <h5 className="text-gray-500">{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].company} | {JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].startDate}</h5>
                   <p>{JSON.parse(tx.accounts.map(a => a.data.experience).join(', '))[0].desc}</p>
                 </div>
               ))}
